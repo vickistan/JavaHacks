@@ -9,7 +9,7 @@ static final String DB_URL = "jdbc:mysql://localhost:3306/family";
 
 // Database credentials
 static final String USER = "root";
-static final String PASS = "P@ssw0rd1";
+static final String PASS = "FkvtS33h";
 
 public static void main(String[] args) {
     Connection conn = null;
@@ -22,8 +22,9 @@ public static void main(String[] args) {
         Class.forName("com.mysql.jdbc.Driver");
 
         // STEP 3: Open a connection
-        System.out.print("\nConnecting to database...");
+        //System.out.print("\nConnecting to database...");
         conn = DriverManager.getConnection(DB_URL, USER, PASS);
+        System.out.print("\nConnecting to database...");
         System.out.println(" SUCCESS!\n");
 
         // STEP 4: Ask for user input
@@ -45,17 +46,17 @@ public static void main(String[] args) {
         System.out.print("Enter date of death or NA ");
         DOD = scn.nextLine();
 
-        System.out.print("Enter address");
+        System.out.print("Enter address ");
         address = scn.nextLine();
 
-        System.out.print("Enter phone");
+        System.out.print("Enter phone ");
         phone = scn.nextLine();
 
         // STEP 5: Excute query
         System.out.print("\nInserting records into table...");
         stmt = conn.createStatement();
 
-        String sql = "INSERT INTO members " +
+        String sql = "INSERT INTO members (lastname, firstname, family, sex, DOB, DOD, address, phone) " +
             "VALUES (lastname, firstname, family, sex, DOB, DOD, address, phone)";
         stmt.executeUpdate(sql);
 
