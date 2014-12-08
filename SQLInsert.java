@@ -9,7 +9,7 @@ static final String DB_URL = "jdbc:mysql://localhost:3306/family";
 
 // Database credentials
 static final String USER = "root";
-static final String PASS = "FkvtS33h";
+static final String PASS = "P@ssw0rd1";
 
 public static void main(String[] args) {
     Connection conn = null;
