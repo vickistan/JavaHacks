@@ -17,7 +17,7 @@ public class JavaMysqlSelectMember
       String myDriver = "com.mysql.jdbc.Driver";
       String myUrl = "jdbc:mysql://localhost/family?zeroDateTimeBehavior=convertToNull";
       Class.forName(myDriver);
-      Connection conn = DriverManager.getConnection(myUrl, "root", "FkvtS33h");
+      Connection conn = DriverManager.getConnection(myUrl, "root", "Passw0rd1");
        
       // our SQL SELECT query. 
       // if you only need a few columns, specify them by name instead of using "*"

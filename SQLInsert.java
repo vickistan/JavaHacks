@@ -9,7 +9,7 @@ static final String DB_URL = "jdbc:mysql://localhost:3306/family";
 
 // Database credentials
 static final String USER = "root";
-static final String PASS = "FkvtS33h";
+static final String PASS = "Passw0rd1";
 
 public static void main(String[] args) {
     Connection conn = null;
@@ -29,6 +29,7 @@ public static void main(String[] args) {
 
         // STEP 4: Ask for user input
         System.out.print("Enter last name ");
+	String lastname = String.gettext();
         lastname = scn.nextLine();
 
         System.out.print("Enter first name ");
@@ -56,8 +57,11 @@ public static void main(String[] args) {
         System.out.print("\nInserting records into table...");
         stmt = conn.createStatement();
 
+	System.out.printf("name => %s %s %s %s %s %s %s %s", lastname, firstname, family, sex, DOB, DOD, address, phone);
+
         String sql = "INSERT INTO members (lastname, firstname, family, sex, DOB, DOD, address, phone) " +
             "VALUES (lastname, firstname, family, sex, DOB, DOD, address, phone)";
+	System.out.printf("%s", sql);
         stmt.executeUpdate(sql);
 
         System.out.println(" SUCCESS!\n");
@@ -79,6 +83,6 @@ public static void main(String[] args) {
             se.printStackTrace();
         }
     }
-    System.out.println("Thank you for your patronage!");
+    System.out.println("Thank you for your update!");
   }
 }
