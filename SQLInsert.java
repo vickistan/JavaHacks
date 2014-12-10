@@ -1,6 +1,6 @@
-// STEP 1: Import required packages
 import java.sql.*;
 import java.util.*;
+import java.io.*;
 
 public class SQLInsert {
 // JDBC driver name and database URL
@@ -9,13 +9,13 @@ static final String DB_URL = "jdbc:mysql://localhost:3306/family";
 
 // Database credentials
 static final String USER = "root";
-static final String PASS = "Passw0rd1";
+static final String PASS = "FkvtS33h";
 
 public static void main(String[] args) {
     Connection conn = null;
     Statement stmt = null;
     Scanner scn = new Scanner(System.in);
-    String lastname = null, firstname = null, family = null, sex = null, DOB = null, DOD = null, address = null, phone = null;
+    String s = null, lastname = null, firstname = null, family = null, sex = null, DOB = null, DOD = null, address = null, phone = null;
 
     try {
         // STEP 2: Register JDBC driver
@@ -28,10 +28,19 @@ public static void main(String[] args) {
         System.out.println(" SUCCESS!\n");
 
         // STEP 4: Ask for user input
-        System.out.print("Enter last name ");
-	String lastname = String.gettext();
-        lastname = scn.nextLine();
+        System.out.println("Enter last name ");
 
+	 //  open up standard input
+	 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	 //  read the username from the command-line; need to use try/catch with the
+	 //        //  readLine() method
+	 try {
+	      lastname = br.readLine();
+	     } catch (IOException ioe) {
+	     System.out.println("IO error trying to read your name!");
+	     System.exit(1);
+	     }
+ 
         System.out.print("Enter first name ");
         firstname = scn.nextLine();
 
@@ -59,8 +68,7 @@ public static void main(String[] args) {
 
 	System.out.printf("name => %s %s %s %s %s %s %s %s", lastname, firstname, family, sex, DOB, DOD, address, phone);
 
-        String sql = "INSERT INTO members (lastname, firstname, family, sex, DOB, DOD, address, phone) " +
-            "VALUES (lastname, firstname, family, sex, DOB, DOD, address, phone)";
+        String sql = String.format("INSERT INTO members (lastname, firstname, family, sex, DOB, DOD, address, phone) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')", lastname, firstname, family, sex, DOB, DOD, address, phone);
 	System.out.printf("%s", sql);
         stmt.executeUpdate(sql);
 
